@@ -41,7 +41,7 @@ class Api::V1::CarsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
-      @car = Car.find(params[:id])
+      @car = Car.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

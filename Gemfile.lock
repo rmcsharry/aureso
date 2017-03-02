@@ -48,6 +48,8 @@ GEM
     erubis (2.7.0)
     ffi (1.9.17)
     formatador (0.2.5)
+    friendly_id (5.2.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.14.1)
@@ -177,6 +179,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   database_cleaner (~> 1.5.3)
+  friendly_id (~> 5.2.0)
   guard-rspec
   listen (~> 3.0.5)
   pg (~> 0.18)
