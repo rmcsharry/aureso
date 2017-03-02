@@ -7,9 +7,10 @@ RSpec.describe Api::V1::CarsController, type: :controller do
     "max_speed": "120 km/h",
   }}
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) {{
+    "name": nil,
+    "max_speed": "120 km/h",
+  }}
 
   let(:valid_session) { {} }
 
@@ -54,15 +55,15 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) {{
+        "max_speed": "160 km/h"
+      }}
 
       it "updates the requested car" do
         car = Car.create! valid_attributes
         put :update, params: {id: car.to_param, car: new_attributes}, session: valid_session
         car.reload
-        skip("Add assertions for updated state")
+        expect(car.max_speed).to eq("160 km/h")
       end
 
       it "assigns the requested car as @car" do
