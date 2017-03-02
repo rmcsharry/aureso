@@ -55,6 +55,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         post :create, params: {car: invalid_attributes}, session: valid_session
         expect(assigns(:car)).to be_a_new(Car)
       end
+
+      it "return a status 422" do
+        car = Car.create! valid_attributes
+        put :update, params: {id: car.to_param, car: invalid_attributes}, session: valid_session
+        expect(response.status).to eq(422)
+      end       
     end
   end
 
