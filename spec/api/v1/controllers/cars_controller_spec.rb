@@ -43,6 +43,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         expect(assigns(:car)).to be_a(Car)
         expect(assigns(:car)).to be_persisted
       end
+
+      it "return a status 201" do
+        post :create, params: {car: valid_attributes}, session: valid_session
+        expect(response.status).to eq(201)
+      end        
     end
 
     context "with invalid params" do
@@ -71,6 +76,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         put :update, params: {id: car.to_param, car: valid_attributes}, session: valid_session
         expect(assigns(:car)).to eq(car)
       end
+
+      it "return a status 200" do
+        car = Car.create! valid_attributes
+        put :update, params: {id: car.to_param, car: valid_attributes}, session: valid_session
+        expect(response.status).to eq(200)
+      end      
     end
 
     context "with invalid params" do
@@ -79,6 +90,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         put :update, params: {id: car.to_param, car: invalid_attributes}, session: valid_session
         expect(assigns(:car)).to eq(car)
       end
+
+      it "return a status 422" do
+        car = Car.create! valid_attributes
+        put :update, params: {id: car.to_param, car: invalid_attributes}, session: valid_session
+        expect(response.status).to eq(422)
+      end          
     end
   end
 
@@ -89,6 +106,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         delete :destroy, params: {id: car.to_param}, session: valid_session
       }.to change(Car, :count).by(-1)
     end
+
+    it "return a status 204" do
+      car = Car.create! valid_attributes
+      delete :destroy, params: {id: car.to_param, car: valid_attributes}, session: valid_session
+      expect(response.status).to eq(204)
+    end        
   end
 
 end
