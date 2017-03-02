@@ -18,7 +18,7 @@ class Api::V1::CarsController < ApplicationController
     @car = Car.new(car_params)
 
     if @car.save
-      render json: @car, status: :created, location: @car
+      render json: @car, status: :created
     else
       render json: @car.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class Api::V1::CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:car_slug, :max_speed, :max_speed_on_track)
+      params.require(:car).permit(:name, :max_speed, :max_speed_on_track)
     end
 end

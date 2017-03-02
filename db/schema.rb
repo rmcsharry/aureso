@@ -16,12 +16,13 @@ ActiveRecord::Schema.define(version: 20170302125940) do
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
-    t.string   "name"
-    t.string   "car_slug"
+    t.string   "name",       null: false
+    t.string   "slug",       null: false
     t.string   "max_speed"
-    t.string   "max_speed_on_track"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cars_on_name", unique: true, using: :btree
+    t.index ["slug"], name: "index_cars_on_slug", unique: true, using: :btree
   end
 
 end

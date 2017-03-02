@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::CarsController, type: :controller do
 
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) {{
+    "name": "Suburu Imprezza",
+    "max_speed": "120 km/h",
+  }}
 
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
@@ -41,22 +42,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         expect(assigns(:car)).to be_a(Car)
         expect(assigns(:car)).to be_persisted
       end
-
-      it "redirects to the created car" do
-        post :create, params: {car: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Car.last)
-      end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved car as @car" do
         post :create, params: {car: invalid_attributes}, session: valid_session
         expect(assigns(:car)).to be_a_new(Car)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, params: {car: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
       end
     end
   end
@@ -79,12 +70,6 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         put :update, params: {id: car.to_param, car: valid_attributes}, session: valid_session
         expect(assigns(:car)).to eq(car)
       end
-
-      it "redirects to the car" do
-        car = Car.create! valid_attributes
-        put :update, params: {id: car.to_param, car: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(car)
-      end
     end
 
     context "with invalid params" do
@@ -92,12 +77,6 @@ RSpec.describe Api::V1::CarsController, type: :controller do
         car = Car.create! valid_attributes
         put :update, params: {id: car.to_param, car: invalid_attributes}, session: valid_session
         expect(assigns(:car)).to eq(car)
-      end
-
-      it "re-renders the 'edit' template" do
-        car = Car.create! valid_attributes
-        put :update, params: {id: car.to_param, car: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
       end
     end
   end
@@ -108,12 +87,6 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       expect {
         delete :destroy, params: {id: car.to_param}, session: valid_session
       }.to change(Car, :count).by(-1)
-    end
-
-    it "redirects to the cars list" do
-      car = Car.create! valid_attributes
-      delete :destroy, params: {id: car.to_param}, session: valid_session
-      expect(response).to redirect_to(cars_url)
     end
   end
 
