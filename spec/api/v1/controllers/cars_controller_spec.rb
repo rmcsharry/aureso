@@ -4,12 +4,12 @@ RSpec.describe Api::V1::CarsController, type: :controller do
 
   let(:valid_attributes) {{
     "name": "Suburu Imprezza",
-    "max_speed": "120 km/h",
+    "max_speed": "120km/h",
   }}
 
   let(:invalid_attributes) {{
     "name": nil,
-    "max_speed": "120 km/h",
+    "max_speed": "120km/h",
   }}
 
   let(:valid_session) { {} }
@@ -67,14 +67,14 @@ RSpec.describe Api::V1::CarsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {{
-        "max_speed": "160 km/h"
+        "max_speed": "160km/h"
       }}
 
       it "updates the requested car" do
         car = Car.create! valid_attributes
         put :update, params: {id: car.to_param, car: new_attributes}, session: valid_session
         car.reload
-        expect(car.max_speed).to eq("160 km/h")
+        expect(car.max_speed).to eq("160km/h")
       end
 
       it "assigns the requested car as @car" do
