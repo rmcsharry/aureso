@@ -26,6 +26,8 @@ end
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5.2' 
+  gem 'fabrication'
+  gem 'rspec-json_expectations'
 end
 
 group :development do
