@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   include FriendlyId
+  attr_accessor :max_speed_on_track
 
   friendly_id :name, use: :slugged
 
