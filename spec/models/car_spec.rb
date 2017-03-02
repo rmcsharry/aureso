@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Car, type: :model do
   subject {
     described_class.new(
-    "name": "Suburu Imprezza",
+    "name": "Subaru Impreza",
     "max_speed": "120 km/h",
     )
   }
@@ -19,7 +19,7 @@ RSpec.describe Car, type: :model do
 
   it "is not valid with non-unique name" do
     subject.save
-    dup_subject = described_class.new("name": "Suburu Imprezza")
+    dup_subject = described_class.new("name": "Subaru Impreza")
     dup_subject.save
     expect(dup_subject).to_not be_valid
   end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::CarsController, type: :controller do
 
   let(:valid_attributes) {{
-    "name": "Suburu Imprezza",
+    "name": "Subaru Impreza",
     "max_speed": "120km/h",
   }}
 
@@ -20,6 +20,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       get :index, params: {}, session: valid_session
       expect(assigns(:cars)).to eq([car])
     end
+
+    it "return a status 201" do
+      post :create, params: {car: valid_attributes}, session: valid_session
+      expect(response.status).to eq(201)
+    end      
   end
 
   describe "GET #show" do
@@ -28,6 +33,11 @@ RSpec.describe Api::V1::CarsController, type: :controller do
       get :show, params: {id: car.to_param}, session: valid_session
       expect(assigns(:car)).to eq(car)
     end
+
+    it "return a status 201" do
+      post :create, params: {car: valid_attributes}, session: valid_session
+      expect(response.status).to eq(201)
+    end      
   end
 
   describe "POST #create" do
