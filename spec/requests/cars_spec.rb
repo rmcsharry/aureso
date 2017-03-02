@@ -14,8 +14,8 @@ RSpec.describe "Cars", type: :request do
       Car.create!(name:'Suburu Impreza', max_speed:'120km/h')
       get api_v1_car_path(id: 'suburu-impreza')
 
-      car = json(response.body)[:car]            
-      msot = car[:max_speed_on_track]
+      # car = json(response.body)[:car]            
+      # msot = car[:max_speed_on_track]
       
       expect(response).to have_http_status(200) 
       expect(response.body).to include_json(car: {max_speed_on_track: nil})
