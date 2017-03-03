@@ -10,6 +10,9 @@ class Api::V1::CarsController < ApplicationController
 
   # GET /cars/1
   def show
+    
+    @car.track = params[:track]
+    
     render json: @car
   end
 
