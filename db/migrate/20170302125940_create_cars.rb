@@ -3,7 +3,8 @@ class CreateCars < ActiveRecord::Migration[5.0]
     create_table :cars do |t|
       t.string :name, null: false
       t.string :slug, null: false
-      t.string :max_speed
+      t.integer :max_speed
+      t.string :speed_unit
 
       t.timestamps
     end
