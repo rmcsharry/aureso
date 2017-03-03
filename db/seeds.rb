@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Track.create({name: 'Nurburgring', surface_type: 'asphalt'})
+Track.create({name: 'Brands Hatch', surface_type: 'gravel'})
+Track.create({name: 'Monaco', surface_type: 'snow'})
+
+Car.create({name: 'Subaru Impreza', max_speed: '120km/h'})
+Car.create({name: 'Porsche 911', max_speed: '220km/h'})

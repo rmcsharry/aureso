@@ -6,5 +6,6 @@ class CreateTracks < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
+    add_index :tracks, :name, :unique => true
   end
 end
