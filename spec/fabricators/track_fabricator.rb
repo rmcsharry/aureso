@@ -1,4 +1,4 @@
 Fabricator(:track) do
-  name         "Nurburgring"
+  name "Monaco"
   surface_type 1
 end

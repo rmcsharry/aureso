@@ -1,4 +1,4 @@
 Fabricator(:car) do
-  name "Subaru Impreza"
-  max_speed "120km/h"
+  name "Porsche 911"
+  max_speed "200"
 end
