@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170302222751) do
     t.integer  "surface_type", default: 0, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["name"], name: "index_tracks_on_name", unique: true, using: :btree
   end
 
 end
