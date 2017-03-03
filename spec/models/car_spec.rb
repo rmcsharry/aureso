@@ -24,7 +24,12 @@ RSpec.describe Car, type: :model do
     expect(dup_subject).to_not be_valid
   end
 
-  it "returns max_speed_on_track attribute" do
+  it "has the non persistent attribute max_speed_on_track" do
     expect(subject).to have_attributes(max_speed_on_track: nil)
+  end
+
+  it "sets max_speed_on_track = 'no track selected' when no track is set" do
+    subject.track = nil
+    expect(subject).to have_attributes(max_speed_on_track: 'no track selected')
   end
 end

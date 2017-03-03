@@ -4,6 +4,8 @@ class Car < ApplicationRecord
 
   friendly_id :name, use: :slugged
 
+  has_many :events
+
   validates_presence_of :name
   validates_uniqueness_of :name
 
@@ -14,19 +16,10 @@ class Car < ApplicationRecord
   def track=(value)
     if value.present?
       @track = value
-      calculate_max_speed
+      self.max_speed_on_track = SpeedCalculator.max_on_track(self)
     else
-      self.max_speed_on_track = 'no track selected'
-      @track = 'none'      
-    end
-  end
-
-  def calculate_max_speed
-    my_track = Track.find_by name: @track
-    if my_track
-      self.max_speed_on_track = "100km/h"
-    else
-      self.max_speed_on_track = 'track not found'
+      @track = 'no track selected'    
+      self.max_speed_on_track = @track      
     end
   end
 
