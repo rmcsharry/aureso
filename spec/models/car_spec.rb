@@ -4,7 +4,7 @@ RSpec.describe Car, type: :model do
   subject {
     described_class.new(
     "name": "Subaru Impreza",
-    "max_speed": "120 km/h",
+    "max_speed": 120,
     )
   }
 
